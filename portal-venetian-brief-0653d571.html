@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门威尼斯人 · 再次相逢</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(160deg, #fce3c8 0%, #f3d2b0 40%, #e9c49a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            color: #2e241f;
+            line-height: 1.7;
+        }
+
+        .content-card {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 250, 240, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 36px;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 20px 40px -12px rgba(110, 70, 40, 0.25),
+                        0 8px 16px -6px rgba(180, 120, 70, 0.12);
+            transition: box-shadow 0.25s ease;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 24px 48px -14px rgba(90, 55, 30, 0.30),
+                        0 10px 20px -8px rgba(160, 100, 50, 0.10);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            color: #553b2a;
+            margin-bottom: 0.2rem;
+            border-left: 6px solid #d9a97a;
+            padding-left: 1.1rem;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: #7f6048;
+            margin: 0.4rem 0 1.6rem 0;
+            padding-left: 1.7rem;
+            border-bottom: 1px dashed #e7d3be;
+            padding-bottom: 0.8rem;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            margin-bottom: 1.8rem;
+            color: #3d322b;
+            text-align: justify;
+        }
+
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.6rem 0 2rem 0;
+        }
+
+        .highlight-item {
+            flex: 1 1 180px;
+            background: #fef7ed;
+            padding: 1.2rem 1rem;
+            border-radius: 24px;
+            border: 1px solid #eedbc8;
+            transition: background 0.2s;
+        }
+
+        .highlight-item:hover {
+            background: #faf0e0;
+        }
+
+        .highlight-item h3 {
+            font-size: 1.1rem;
+            font-weight: 520;
+            color: #7b5b40;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.3px;
+        }
+
+        .highlight-item p {
+            font-size: 0.92rem;
+            color: #54463b;
+            margin-top: 0.2rem;
+        }
+
+        .usage-note {
+            background: #f7ede3;
+            border-radius: 28px;
+            padding: 1.4rem 1.8rem;
+            margin: 1.8rem 0 1rem 0;
+            border: 1px solid #e6d2bd;
+        }
+
+        .usage-note h2 {
+            font-size: 1.25rem;
+            font-weight: 530;
+            color: #634b36;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            border-bottom: 2px solid #dbb594;
+            padding-bottom: 0.15rem;
+        }
+
+        .usage-note ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .usage-note ul li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.96rem;
+            color: #3c3129;
+        }
+
+        .usage-note ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.1rem;
+            color: #b68b6b;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .faq-mini {
+            margin: 1.6rem 0 1.2rem 0;
+            border-top: 1px solid #e5d2be;
+            padding-top: 1.4rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            font-size: 0.96rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #634d3b;
+            padding: 0.3rem 0.6rem;
+            background: #fcf3ea;
+            border-radius: 30px;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .faq-mini summary:hover {
+            background: #f3e2d1;
+        }
+
+        .faq-mini details p {
+            margin-top: 0.4rem;
+            padding-left: 0.8rem;
+            color: #4c3f35;
+            border-left: 2px solid #dbbc9f;
+        }
+
+        .link-sentence {
+            background: #faf1e6;
+            border-radius: 40px;
+            padding: 1rem 1.8rem;
+            margin: 1.8rem 0 0.4rem 0;
+            text-align: center;
+            font-size: 1rem;
+            border: 1px solid #e2cfb8;
+            letter-spacing: 0.2px;
+        }
+
+        .link-sentence a {
+            color: #7f4e2e;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(to right, #f7e4d0, #f3d5bb);
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(150, 95, 55, 0.10);
+            border: 1px solid #e5c8ad;
+        }
+
+        .link-sentence a:hover {
+            background: #ebd2b9;
+            color: #5c3b23;
+            box-shadow: 0 4px 10px rgba(130, 80, 45, 0.18);
+            transform: scale(1.02);
+        }
+
+        .note-ps {
+            margin-top: 1rem;
+            font-size: 0.88rem;
+            color: #7f6b5b;
+            text-align: center;
+            border-top: 1px dashed #dccabc;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 560px) {
+            .content-card {
+                padding: 1.8rem 1.4rem;
+                border-radius: 28px;
+            }
+            h1 {
+                font-size: 1.7rem;
+                padding-left: 0.8rem;
+            }
+            .hero-sub {
+                font-size: 0.95rem;
+                padding-left: 1rem;
+            }
+            .highlight-grid {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .link-sentence {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+            .link-sentence a {
+                padding: 0.15rem 0.9rem;
+                display: inline-block;
+                margin: 0.2rem 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .content-card {
+                padding: 1.4rem 1rem;
+            }
+            .usage-note {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-card">
+        <h1>再次相见 · 威尼斯人</h1>
+        <div class="hero-sub">收藏一处熟悉的角落，慢慢重温</div>
+
+        <div class="intro-text">
+            有些地方，去过一次之后，便会在心里留下温度。<strong>澳门威尼斯人</strong>就是这样的存在——运河边的微风、拱桥上的光影，总让人想再回去走走。这里不只是旅行地图上的坐标，更像是一位旧友，无论时隔多久，都愿意以同样的暖意迎接你。
+        </div>
+
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <h3>🌿 熟悉的节奏</h3>
+                <p>不必刻意规划，散步、看船、听街头艺人即兴演奏——每一次都有恰好的松弛感。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>☕ 日常的仪式</h3>
+                <p>找一家运河边的咖啡馆，翻几页书，或者只是发呆看水纹。日子在这里变得很轻。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>🎭 常看常新</h3>
+                <p>有时会有新的艺术装置、季节装饰，或是偶遇一场小型演出。熟悉中藏着惊喜。</p>
+            </div>
+        </div>
+
+        <div class="usage-note">
+            <h2>把这里放进生活里</h2>
+            <ul>
+                <li>收藏页面，就像在书里夹一枚书签——下次想重温时，随时可以回来。</li>
+                <li>偶尔打开看看，也许会发现新的活动信息或空间变化，不必特意寻找。</li>
+                <li>如果你也喜欢记录，不妨把这里当作一个安静的背景板，拍照、写点随想都很合适。</li>
+            </ul>
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>为什么总想再来一次？</summary>
+                <p>或许是因为它不急于让你记住什么。这里的氛围是慢的，连光线都带着柔和的滤镜。对于喜欢安静重复的人来说，每次到访都像翻开同一本喜欢的书，总有熟悉又安心的段落。</p>
+            </details>
+            <details>
+                <summary>适合什么样的时刻？</summary>
+                <p>周末午后、工作间隙的短暂逃离、朋友小聚的轻松开场。不需要特别理由，甚至只是想在手机里存几张好看的照片，都值得点开看一眼。</p>
+            </details>
+        </div>
+
+        <div class="link-sentence">
+            如果心里已经浮现了某些画面，不妨把 <a href="https://portal-venetian.com">澳门威尼斯人</a> 留在收藏夹里，当作一个随时可抵达的温暖坐标。
+        </div>
+
+        <div class="note-ps">
+            保持距离，也保持温度 · 一切如常，便是最好的重逢
+        </div>
+    </div>
+</body>
+</html>
