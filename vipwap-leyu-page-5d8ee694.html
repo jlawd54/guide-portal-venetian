@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼 · 简明指南与访问手册</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f4f6;
+      color: #1e2a36;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 杂志式横幅 */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(222, 232, 245, 0.5) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #1e2a36;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #4b5a6a;
+      max-width: 70%;
+      border-left: 3px solid #d0d9e2;
+      padding-left: 1rem;
+    }
+
+    /* 背景介绍卡片 —— 更细腻的叠层 */
+    .bg-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e8edf2;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .bg-card:hover {
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+    }
+
+    .bg-card h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: #1e2a36;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bg-card h2 span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #7c8b9a;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .bg-card p {
+      font-size: 0.98rem;
+      color: #2c3a48;
+      margin-bottom: 0.5rem;
+    }
+
+    .bg-card p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* 三段式介绍 —— 卡片网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 1.8rem;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid #e4eaf0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #1e2a36;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .feature-item p {
+      font-size: 0.92rem;
+      color: #3b4b5b;
+    }
+
+    /* FAQ 摘要 — 极简条目 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e3e9ef;
+      padding: 1.6rem 2rem;
+      margin: 1.8rem 0 2.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-mini h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #1e2a36;
+    }
+
+    .faq-item {
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed #e0e6ec;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1e2a36;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #3e4f5f;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2rem;
+      border: 1px solid #e3e9ef;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      text-align: center;
+      margin-top: 0.8rem;
+    }
+
+    .footer-note p {
+      font-size: 0.98rem;
+      color: #2c3a48;
+      max-width: 580px;
+      margin: 0 auto 0.8rem;
+    }
+
+    .footer-note .inline-link {
+      color: #1e2a36;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b3c2d1;
+      padding-bottom: 1px;
+      transition: border-color 0.15s;
+    }
+
+    .footer-note .inline-link:hover {
+      border-bottom-color: #1e2a36;
+    }
+
+    .divider-light {
+      width: 40px;
+      height: 2px;
+      background: #cfd9e2;
+      margin: 1.2rem auto 1.8rem;
+      border-radius: 4px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 860px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .hero {
+        padding: 1.6rem 1.2rem;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero .sub {
+        max-width: 100%;
+        font-size: 0.9rem;
+      }
+
+      .bg-card {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .faq-mini {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .footer-note {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* 轻量点缀 */
+    .small-meta {
+      font-size: 0.8rem;
+      color: #748392;
+      letter-spacing: 0.2px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- Hero 横幅 —— 杂志感标题 -->
+  <div class="hero">
+    <h1>乐鱼 · 访问与使用指南</h1>
+    <div class="sub">
+      一份简明、克制的参考，帮助你更快了解平台背景与访问方式。
+    </div>
+  </div>
+
+  <!-- 背景说明卡片 (第一段自然介绍) -->
+  <div class="bg-card">
+    <h2><span></span> 关于乐鱼</h2>
+    <p>
+      乐鱼是一个面向特定用户群体的在线服务入口，围绕内容浏览与基础互动展开。
+      平台在设计上强调简洁与低干扰，页面结构偏向实用主义，没有过度铺陈的装饰或诱导式跳转。
+      对于初次接触的人而言，它更像一个功能明确、氛围安静的信息节点。
+    </p>
+    <p>
+      在过往的运营中，乐鱼保持了相对克制的更新节奏，没有频繁更换界面逻辑，
+      这也使得熟悉它的人能够长期保持一致的访问习惯。
+    </p>
+  </div>
+
+  <!-- 三段自然介绍 (特点 + 场景) 使用卡片网格 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>轻量界面</h3>
+      <p>页面注重内容呈现，减少非必要的装饰元素。无论是列表页还是详情页，层级都较为清晰，适合专注浏览。</p>
+    </div>
+    <div class="feature-item">
+      <h3>常规访问方式</h3>
+      <p>无需额外配置或专用工具，通过主流浏览器即可直接访问。保持网络环境稳定即可获得流畅体验。</p>
+    </div>
+    <div class="feature-item">
+      <h3>持续可用</h3>
+      <p>根据长期观察，乐鱼的域名解析与服务器响应一直维持在稳定水平，极少出现长时间中断。</p>
+    </div>
+  </div>
+
+  <!-- 第三段介绍 —— 访问场景与提醒 (用背景卡片) -->
+  <div class="bg-card">
+    <h2><span></span> 关于访问的一些提醒</h2>
+    <p>
+      尽管平台本身结构简单，但网络环境、DNS 刷新以及本地浏览器缓存有时会影响初次连接。
+      如果你发现页面加载偏慢，可以尝试刷新一次或稍后重试 —— 这通常是临时波动，而非平台问题。
+    </p>
+    <p>
+      另外，部分网络服务商可能对非热门域名有访问限制，此时更换一个公共 DNS 或使用备用网络往往会解决问题。
+      乐鱼没有强制要求注册或留存个人信息，因此隐私负担也相对较小。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 —— 自然收录两个常见询问 -->
+  <div class="faq-mini">
+    <h2>常见问题摘要</h2>
+    <div class="faq-item">
+      <strong>乐鱼需要下载客户端吗？</strong>
+      <p>不需要。所有操作均基于网页完成，不用安装任何软件或插件，浏览器即可。</p>
+    </div>
+    <div class="faq-item">
+      <strong>是否支持移动端访问？</strong>
+      <p>支持。手机与平板均可通过浏览器直接进入，页面自适配屏幕宽度，阅读体验不受影响。</p>
+    </div>
+    <div class="small-meta" style="margin-top: 0.6rem;">—— 更多细节可在实际访问中留意。</div>
+  </div>
+
+  <!-- 页尾访问提示 —— 自然嵌入链接 -->
+  <div class="footer-note">
+    <p>
+      如果你希望自行探索，可以直接访问 <a href="https://vipwap-leyu.com" class="inline-link">乐鱼</a>，
+      无需走任何中间跳转或输入额外信息。保持平常心，按你自己的节奏浏览即可。
+    </p>
+    <div class="divider-light"></div>
+    <p style="font-size:0.9rem; color:#5c6d7d;">
+      本页仅为介绍与提示，不构成任何引导或承诺。请依据个人判断与需求使用。
+    </p>
+  </div>
+</div>
+</body>
+</html>
